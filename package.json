@@ -1,0 +1,25 @@
+{
+  "name": "caramel-dog-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreseichi/caramel-dog-bot.git"
+  },
+  "author": "André Tashiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andreseichi/caramel-dog-bot/issues"
+  },
+  "homepage": "https://github.com/andreseichi/caramel-dog-bot#readme",
+  "dependencies": {
+    "discord.js": "^14.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0"
+  }
+}
