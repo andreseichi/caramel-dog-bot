@@ -5,6 +5,8 @@
   "main": "src/bot.ts",
   "scripts": {
     "dev": "nodemon src/bot.ts",
+    "register-commands:global": "nodemon src/deploy-global-commands",
+    "register-commands:guild": "nodemon src/deploy-guild-commands",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
