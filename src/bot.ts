@@ -13,6 +13,7 @@ const client = new Client({
 }) as myClient;
 client.commands = new Collection();
 
+// command handler
 const commandFiles = readdirSync(join(__dirname, "commands")).filter((file) =>
   file.endsWith(".ts")
 );
@@ -30,6 +31,7 @@ for (const file of commandFiles) {
   }
 }
 
+// event handler
 const eventFiles = readdirSync(join(__dirname, "events")).filter((file) =>
   file.endsWith(".ts")
 );
