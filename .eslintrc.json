@@ -37,6 +37,7 @@
     "no-shadow": ["error", { "allow": ["err", "resolve", "reject"] }],
     "no-trailing-spaces": ["error"],
     "no-var": "error",
+    "@typescript-eslint/no-var-requires": "off",
     "object-curly-spacing": ["error", "always"],
     "prefer-const": "error",
     "semi": ["error", "always"],
