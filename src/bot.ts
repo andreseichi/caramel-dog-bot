@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import { Client, Collection, Events, GatewayIntentBits } from "discord.js";
-import { ApplicationCommandModule } from "./@types";
+import { Client, Collection, GatewayIntentBits } from "discord.js";
+import { ApplicationCommandModule, ApplicationEventModule } from "./@types";
 import myClient from "./@types/client";
 
 import { readdirSync } from "fs";
@@ -30,25 +30,19 @@ for (const file of commandFiles) {
   }
 }
 
-client.once(Events.ClientReady, (c) => {
-  console.log(`Ready! Logged in as ${c.user.tag}`);
-});
+const eventFiles = readdirSync(join(__dirname, "events")).filter((file) =>
+  file.endsWith(".ts")
+);
 
-client.on(Events.InteractionCreate, async (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
+for (const file of eventFiles) {
+  const filePath = join(__dirname, "events", `${file}`);
+  const event: ApplicationEventModule = require(filePath);
 
-  const command = client.commands.get(interaction.commandName);
-  if (!command) return;
-
-  try {
-    await command.execute(interaction);
-  } catch (error) {
-    console.error(error);
-    await interaction.reply({
-      content: "There was an error while executing this command!",
-      ephemeral: true,
-    });
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args));
+  } else {
+    client.on(event.name, (...args) => event.execute(...args));
   }
-});
+}
 
 client.login(process.env.DISCORD_TOKEN);
