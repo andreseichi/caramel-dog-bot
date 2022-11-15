@@ -7,7 +7,7 @@ import { readdirSync } from "fs";
 import { join } from "path";
 
 const clientId = String(process.env.CLIENT_ID);
-const guildId = String(process.env.CLIENT_ID);
+const guildId = String(process.env.GUILD_ID);
 
 const commands = [];
 // Grab all the command files from the commands directory you created earlier
